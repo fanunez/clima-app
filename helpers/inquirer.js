@@ -10,38 +10,22 @@ const menuOpts = [
         // similares a los selectores html
         choices: [
             {
-                value: '1',
-                name: `${ '1.'.green } Crear tarea`
+                value: 1,
+                name: `${ '1.'.green } Buscar ciudad`
             },
             {
-                value: '2',
-                name: `${ '2.'.green } Listar tareas`
+                value: 2,
+                name: `${ '2.'.green } Historial`
             },
             {
-                value: '3',
-                name: `${ '3.'.green } Listar tareas completadas`
-            },
-            {
-                value: '4',
-                name: `${ '4.'.green } Listar tareas pendientes`
-            },
-            {
-                value: '5',
-                name: `${ '5.'.green } Completar tarea(s)`
-            },
-            {
-                value: '6',
-                name: `${ '6.'.green } Borrar tarea`
-            },
-            {
-                value: '0',
+                value: 0,
                 name: `${ '0.'.green } Salir`
             }
         ]
     }
 ];
 
-
+// Menu de despliege de opciones
 const inquirerMenu = async() => {
 
     console.clear();
@@ -54,7 +38,7 @@ const inquirerMenu = async() => {
     return option;
 }
 
-
+// Pausa asincrona para mantener mensajes en pantalla
 const pause = async() => {
 
     const question = [
@@ -70,6 +54,7 @@ const pause = async() => {
 
 }
 
+// Lectura de input por consola
 const readInput = async( msg ) => {
 
     const question = [
@@ -91,7 +76,7 @@ const readInput = async( msg ) => {
 
 }
 
-
+// Listar tareas que pueden ser eliminadas
 const listTaskDelete = async( tasks = [] ) => {
 
     // Metodo map transforma los arreglos 'hijos' al tipo que se pida
@@ -123,6 +108,7 @@ const listTaskDelete = async( tasks = [] ) => {
 
 }
 
+// Mensaje de confirmacion
 const confirm = async( msg ) => {
 
     const question = [
@@ -137,6 +123,7 @@ const confirm = async( msg ) => {
     return ok;
 }
 
+// Lista tipo check
 const showCheckList = async( tasks = [] ) => {
 
     // Metodo map transforma los arreglos 'hijos' al tipo que se pida
