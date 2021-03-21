@@ -33,8 +33,11 @@ const main = async() => {
                 
                 // Seleccionar el lugar
                 const id = await listPlaces( places );
+                if( id === '0' ) continue;
+                // Guardar en DB
                 const placeSelect = places.find(  l => l.id === id );                
-                
+                search.addHistorial( placeSelect.name );
+
                 // Clima
                 const weatherPlace = await search.getWeather(placeSelect.lat, placeSelect.lng);
                 
@@ -51,8 +54,15 @@ const main = async() => {
 
                 break;
             
+            // Historial
             case 2:
-                console.log('Opcion Historial');
+                // search.historial.forEach( (place, index) => {
+                //     const idx = `${index + 1}.`.green;
+                //     console.log( `${ idx } ${ place }` );
+                // });
+
+                search.historialCaps;
+
                 break;
         }
 
