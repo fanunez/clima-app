@@ -1,6 +1,7 @@
+// Configuracion de variables de entorno
+require('dotenv').config();
 
-
-
+// Importaciones 
 const { readInput, 
         inquirerMenu, 
         pause 
