@@ -77,14 +77,14 @@ const readInput = async( msg ) => {
 }
 
 // Listar tareas que pueden ser eliminadas
-const listTaskDelete = async( tasks = [] ) => {
+const listPlaces = async( places = [] ) => {
 
     // Metodo map transforma los arreglos 'hijos' al tipo que se pida
-    const choices = tasks.map( (task, index) => {
+    const choices = places.map( (place, index) => {
         const idx = `${ index + 1 }.`.green;
         return {
-            value: task.id,
-            name: `${ idx } ${ task.desc }`
+            value: place.id,
+            name: `${ idx } ${ place.name }`
         }
     });
 
@@ -98,7 +98,7 @@ const listTaskDelete = async( tasks = [] ) => {
         {
             type: 'list',
             name: 'id',
-            message: 'Borrar',
+            message: 'Seleccione lugar: ',
             choices
         }
     ];
@@ -155,7 +155,7 @@ module.exports = {
     inquirerMenu,
     pause,
     readInput,
-    listTaskDelete,
+    listPlaces,
     confirm,
     showCheckList
 }

@@ -4,7 +4,8 @@ require('dotenv').config();
 // Importaciones 
 const { readInput, 
         inquirerMenu, 
-        pause 
+        pause,
+        listPlaces
 } = require("./helpers/inquirer");
 
 const Search = require("./models/search");
@@ -26,22 +27,27 @@ const main = async() => {
             case 1:
                 // Mostrar mensaje
                 const place = await readInput('Ciudad: ');
-                await search.searchCity( place );
-
+                
                 // Buscar los lugares
-
+                const places = await search.searchCity( place );
+                
                 // Seleccionar el lugar
-
+                const id = await listPlaces( places );
+                const placeSelect = places.find(  l => l.id === id );                
+                
                 // Clima
-
+                const weatherPlace = await search.getWeather(placeSelect.lat, placeSelect.lng);
+                
                 // Mostrar resultados
-                console.log('\nInformacion de la ciudad\n'.green);
-                console.log('Ciudad: ', );
-                console.log('Lat: ', );
-                console.log('Lng: ', );
-                console.log('Temperatura: ', );
-                console.log('Minima: ', );
-                console.log('Maxima: ', );
+                console.clear();
+                console.log('\nInformacion de la ciudad\n'.green );
+                console.log('Ciudad: ', placeSelect.name.green );
+                console.log('Lat: ', placeSelect.lat );
+                console.log('Lng: ', placeSelect.lng );
+                console.log('Temperatura: ', weatherPlace.temp );
+                console.log('Minima: ', weatherPlace.min );
+                console.log('Maxima: ', weatherPlace.max );
+                console.log('Descripcion: ', weatherPlace.desc.green );
 
                 break;
             
